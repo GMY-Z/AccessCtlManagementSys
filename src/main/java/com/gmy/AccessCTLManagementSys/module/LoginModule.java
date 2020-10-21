@@ -117,6 +117,7 @@ public class LoginModule {
             System.err.printf("Login Device[%s] Port[%d]Failed. %s\n", m_strIp, m_nPort, ToolKits.getErrorCodePrint());
         } else {
             System.out.println("Login Success [ " + m_strIp + " ]");
+            System.out.println(new String(LoginModule.m_stDeviceInfo.sSerialNumber).trim());
         }
 
         return m_hLoginHandle.longValue() == 0? false:true;

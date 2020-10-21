@@ -2,7 +2,6 @@ package com.gmy.AccessCTLManagementSys.service;
 
 import com.gmy.AccessCTLManagementSys.lib.NetSDKLib;
 import com.gmy.AccessCTLManagementSys.lib.ToolKits;
-import com.gmy.AccessCTLManagementSys.module.AlarmListenModule;
 import com.gmy.AccessCTLManagementSys.module.GateModule;
 import com.gmy.AccessCTLManagementSys.module.LoginModule;
 import com.sun.jna.Pointer;
@@ -10,13 +9,11 @@ import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Vector;
 
 import static com.gmy.AccessCTLManagementSys.lib.ToolKits.getErrorCodePrint;
@@ -30,7 +27,7 @@ public class Gate {
 
     private AnalyzerDataCB analyzerCallback = new AnalyzerDataCB();
     // 设备断线通知回调
-    private static DisConnect disConnect       = new DisConnect();
+    private static DisConnect disConnect = new DisConnect();
 
     // 网络连接恢复
     private static HaveReConnect haveReConnect = new HaveReConnect();
@@ -44,27 +41,25 @@ public class Gate {
     static int port = 37777;
     static String user = "admin";
     static String password = "12345678a";
+    static String sSerialNumber;
 
-    public Gate(){
+    public Gate() {
         LoginModule.init(disConnect, haveReConnect);
-        if(login()){
+        if (login()) {
             setOnClickListener();
         }
     }
+
     // 监听
     private void setOnClickListener() {
         // 订阅
         m_hAttachHandle = GateModule.realLoadPic(0, analyzerCallback);
 
-        if(m_hAttachHandle.longValue() != 0) {
+        if (m_hAttachHandle.longValue() != 0) {
 
         } else {
 
         }
-
-
-
-
     }
 
     // 设备断线回调: 通过 CLIENT_Init 设置该回调函数，当设备出现断线时，SDK会调用该函数
@@ -112,7 +107,7 @@ public class Gate {
         GateModule.stopRealLoadPic(m_hAttachHandle);
         LoginModule.logout();
 
-        for(int i = 0; i < LoginModule.m_stDeviceInfo.byChanNum; i++) {
+        for (int i = 0; i < LoginModule.m_stDeviceInfo.byChanNum; i++) {
             chnList.clear();
         }
     }
@@ -123,8 +118,7 @@ public class Gate {
 
         public int invoke(NetSDKLib.LLong lAnalyzerHandle, int dwAlarmType,
                           Pointer pAlarmInfo, Pointer pBuffer, int dwBufSize,
-                          Pointer dwUser, int nSequence, Pointer reserved)
-        {
+                          Pointer dwUser, int nSequence, Pointer reserved) {
             if (lAnalyzerHandle.longValue() == 0 || pAlarmInfo == null) {
                 return -1;
             }
@@ -137,10 +131,24 @@ public class Gate {
             System.out.println(dwAlarmType);
 
             ///< 门禁事件
-            if(dwAlarmType == NetSDKLib.EVENT_IVS_ACCESS_CTL) {
+            if (dwAlarmType == NetSDKLib.EVENT_IVS_ACCESS_CTL) {
                 NetSDKLib.DEV_EVENT_ACCESS_CTL_INFO msg = new NetSDKLib.DEV_EVENT_ACCESS_CTL_INFO();
                 ToolKits.GetPointerData(pAlarmInfo, msg);
-
+                System.out.println("channelid" + msg.nChannelID);
+                System.out.println("userid" + new String(msg.szUserID).trim());
+                System.out.println("url" + new String(msg.szSnapURL).trim());
+                String cardName = null;
+                try {
+                    cardName = new String(msg.szCardName, "GBK").trim();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("开门状态" + msg.bStatus);
+                System.out.println("开门方式" + msg.emOpenMethod);
+                System.out.println("卡号" + new String(msg.szCardNo).trim());
+                System.out.println("用户姓名" + cardName);
+                sSerialNumber = new String(LoginModule.m_stDeviceInfo.sSerialNumber).trim();
+                System.out.println("序列号" + sSerialNumber);
                 // 保存图片，获取图片缓存
                 String snapPicPath = path + "\\" + System.currentTimeMillis() + "GateSnapPicture.jpg";  // 保存图片地址
                 byte[] buffer = pBuffer.getByteArray(0, dwBufSize);
@@ -148,7 +156,7 @@ public class Gate {
 
                 try {
                     gateBufferedImage = ImageIO.read(byteArrInputGlobal);
-                    if(gateBufferedImage != null) {
+                    if (gateBufferedImage != null) {
                         ImageIO.write(gateBufferedImage, "jpg", new File(snapPicPath));
                     }
                 } catch (IOException e2) {

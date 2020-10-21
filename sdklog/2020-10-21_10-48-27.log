@@ -1,0 +1,41 @@
+Begin Time:2020-10-21T10:48:27.402
+[2020-10-21T10:48:27.402 info Netsdk:44357 19948:22300 AVNetSDKMgr.cpp:376]Load avnetsdk library dynamically
+[2020-10-21T10:48:27.411 info Netsdk:44357 19948:22300 AVNetSDKMgr.cpp:400]avnetsdk module handle: 000000001F190000
+
+[2020-10-21T10:48:27.411 info Netsdk:44357 19948:22300 AVNetSDKMgr.cpp:730]Load configsdk dynamically
+[2020-10-21T10:48:27.415 info Netsdk:44357 19948:22300 dhnetsdk.cpp:190]Enter CLIENT_SetAutoReconnect:[cbAutoConnect=0000000002940050, dwUser=0000000000000000].
+[2020-10-21T10:48:27.416 info Netsdk:44357 19948:22300 dhnetsdk.cpp:192]Leave CLIENT_SetAutoReconnect.
+[2020-10-21T10:48:27.416 info Netsdk:44357 19948:22300 dhnetsdk.cpp:210]Enter CLIENT_SetConnectTime:[nWaitTime=5000, nTryTimes=1].
+[2020-10-21T10:48:27.416 info Netsdk:44357 19948:22300 dhnetsdk.cpp:223]Leave CLIENT_SetConnectTime.
+[2020-10-21T10:48:27.416 info Netsdk:44357 19948:22300 dhnetsdk.cpp:34041]Enter CLIENT_SetGDPREnable.[bEnable=-1]
+[2020-10-21T10:48:27.416 info Netsdk:44357 19948:22300 dhnetsdk.cpp:34045]Leave CLIENT_SetGDPREnable.
+[2020-10-21T10:48:27.418 info Netsdk:44357 19948:22300 dhnetsdk.cpp:234]Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=10000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=3000, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2020-10-21T10:48:27.418 info Netsdk:44357 19948:22300 dhnetsdk.cpp:249]Leave CLIENT_SetNetworkParam.
+[2020-10-21T10:48:27.421 info Netsdk:44357 19948:22300 dhnetsdk.cpp:809]Enter CLIENT_LoginWithHighLevelSecurity. pstInParam:00000000008AC5F0, pstOutParam:000000000086DE30.
+[2020-10-21T10:48:27.421 info Netsdk:44357 19948:22300 dhnetsdk.cpp:825]IP:10.12.44.21, port:37777, SpeCap:0, CapParam:0000000000000000.
+[2020-10-21T10:48:27.542 info Netsdk:44357 19948:22300 dhnetsdk.cpp:871]Leave CLIENT_LoginWithHighLevelSecurity. error:0, login ID:475265472.
+[2020-10-21T10:48:27.545 info Netsdk:44357 19948:22300 dhnetsdk.cpp:389]Enter CLIENT_SetDVRMessCallBack: [cbMessage=0000000002940090, dwUser=0000000000000000].
+[2020-10-21T10:48:27.545 info Netsdk:44357 19948:22300 dhnetsdk.cpp:391]Leave CLIENT_SetDVRMessCallBack.
+[2020-10-21T10:48:27.547 info Netsdk:44357 19948:22300 dhnetsdk.cpp:4194]Enter CLIENT_StartListenEx. lLoginID:475265472.
+[2020-10-21T10:48:27.548 info Netsdk:44357 19948:22300 dhnetsdk.cpp:4215]Leave CLIENT_StartListenEx.ret:1.
+[2020-10-21T10:48:27.552 info Netsdk:44357 19948:22300 dhnetsdk.cpp:136]Enter CLIENT_InitEx:[cbDisConnect=00000000029400D0, dwUser=0000000000000000, lpInitParam=0000000000000000].
+[2020-10-21T10:48:27.552 info Netsdk:44357 19948:22300 AVNetSDKMgr.cpp:683]Test avnetsdk module handle: 000000001F190000
+
+[2020-10-21T10:48:27.552 info Netsdk:44357 19948:22300 dhnetsdk.cpp:159]Leave CLIENT_InitEx.
+[2020-10-21T10:48:27.553 info Netsdk:44357 19948:22300 Manager.cpp:13590]-------------------Log file reset, log number:10-log size:10240------------------
+Begin Time:2020-10-21T10:48:27.555
+[2020-10-21T10:48:27.555 info Netsdk:44357 19948:22300 dhnetsdk.cpp:190]Enter CLIENT_SetAutoReconnect:[cbAutoConnect=0000000002940110, dwUser=0000000000000000].
+[2020-10-21T10:48:27.555 info Netsdk:44357 19948:22300 dhnetsdk.cpp:192]Leave CLIENT_SetAutoReconnect.
+[2020-10-21T10:48:27.555 info Netsdk:44357 19948:22300 dhnetsdk.cpp:210]Enter CLIENT_SetConnectTime:[nWaitTime=5000, nTryTimes=1].
+[2020-10-21T10:48:27.555 info Netsdk:44357 19948:22300 dhnetsdk.cpp:223]Leave CLIENT_SetConnectTime.
+[2020-10-21T10:48:27.555 info Netsdk:44357 19948:22300 dhnetsdk.cpp:34041]Enter CLIENT_SetGDPREnable.[bEnable=-1]
+[2020-10-21T10:48:27.555 info Netsdk:44357 19948:22300 dhnetsdk.cpp:34045]Leave CLIENT_SetGDPREnable.
+[2020-10-21T10:48:27.556 info Netsdk:44357 19948:22300 dhnetsdk.cpp:234]Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=10000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=3000, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2020-10-21T10:48:27.556 info Netsdk:44357 19948:22300 dhnetsdk.cpp:249]Leave CLIENT_SetNetworkParam.
+[2020-10-21T10:48:27.558 info Netsdk:44357 19948:22300 dhnetsdk.cpp:809]Enter CLIENT_LoginWithHighLevelSecurity. pstInParam:00000000008AC890, pstOutParam:000000000086F030.
+[2020-10-21T10:48:27.558 info Netsdk:44357 19948:22300 dhnetsdk.cpp:825]IP:10.12.44.21, port:37777, SpeCap:0, CapParam:0000000000000000.
+[2020-10-21T10:48:27.688 info Netsdk:44357 19948:22300 dhnetsdk.cpp:871]Leave CLIENT_LoginWithHighLevelSecurity. error:0, login ID:560330048.
+[2020-10-21T10:48:27.690 info Netsdk:44357 19948:22300 dhnetsdk.cpp:9309]Enter CLIENT_RealLoadPictureEx. lLoginID:560330048, nChannelID:1, dwAlarmType:1, bNeedPicFile:1, cbAnalyzerData:0000000002940150, dwUser:0000000000000000, Reserved:0000000000000000.
+[2020-10-21T10:48:27.692 info Netsdk:44357 19948:22300 Utils.cpp:4815]mutil NIC client
+[2020-10-21T10:48:27.695 info Netsdk:44357 19948:22300 DevConfigEx.cpp:10086]IN SetupSession PORT=0 and PORT: 37777
+[2020-10-21T10:48:27.718 info Netsdk:44357 19948:22300 dhnetsdk.cpp:9328]Leave CLIENT_RealLoadPictureEx. ret:559982784.

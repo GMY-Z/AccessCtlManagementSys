@@ -1,0 +1,20 @@
+Begin Time:2020-10-17T13:49:09.745
+[2020-10-17T13:49:09.745 info Netsdk:44357 30448:31976 AVNetSDKMgr.cpp:376]Load avnetsdk library dynamically
+[2020-10-17T13:49:09.754 info Netsdk:44357 30448:31976 AVNetSDKMgr.cpp:400]avnetsdk module handle: 000000001F830000
+
+[2020-10-17T13:49:09.755 info Netsdk:44357 30448:31976 AVNetSDKMgr.cpp:730]Load configsdk dynamically
+[2020-10-17T13:49:09.759 info Netsdk:44357 30448:31976 dhnetsdk.cpp:190]Enter CLIENT_SetAutoReconnect:[cbAutoConnect=000000001CAF0050, dwUser=0000000000000000].
+[2020-10-17T13:49:09.760 info Netsdk:44357 30448:31976 dhnetsdk.cpp:192]Leave CLIENT_SetAutoReconnect.
+[2020-10-17T13:49:09.760 info Netsdk:44357 30448:31976 dhnetsdk.cpp:210]Enter CLIENT_SetConnectTime:[nWaitTime=5000, nTryTimes=1].
+[2020-10-17T13:49:09.760 info Netsdk:44357 30448:31976 dhnetsdk.cpp:223]Leave CLIENT_SetConnectTime.
+[2020-10-17T13:49:09.761 info Netsdk:44357 30448:31976 dhnetsdk.cpp:34041]Enter CLIENT_SetGDPREnable.[bEnable=-1]
+[2020-10-17T13:49:09.761 info Netsdk:44357 30448:31976 dhnetsdk.cpp:34045]Leave CLIENT_SetGDPREnable.
+[2020-10-17T13:49:09.761 info Netsdk:44357 30448:31976 dhnetsdk.cpp:234]Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=10000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=3000, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2020-10-17T13:49:09.761 info Netsdk:44357 30448:31976 dhnetsdk.cpp:249]Leave CLIENT_SetNetworkParam.
+[2020-10-17T13:49:09.763 info Netsdk:44357 30448:31976 dhnetsdk.cpp:809]Enter CLIENT_LoginWithHighLevelSecurity. pstInParam:0000000000D28450, pstOutParam:0000000000D3D1A0.
+[2020-10-17T13:49:09.763 info Netsdk:44357 30448:31976 dhnetsdk.cpp:825]IP:192.168.123.234, port:37777, SpeCap:0, CapParam:0000000000000000.
+[2020-10-17T13:49:09.878 info Netsdk:44357 30448:31976 dhnetsdk.cpp:871]Leave CLIENT_LoginWithHighLevelSecurity. error:0, login ID:486472048.
+[2020-10-17T13:49:09.881 info Netsdk:44357 30448:31976 dhnetsdk.cpp:389]Enter CLIENT_SetDVRMessCallBack: [cbMessage=000000001CAF0090, dwUser=0000000000000000].
+[2020-10-17T13:49:09.881 info Netsdk:44357 30448:31976 dhnetsdk.cpp:391]Leave CLIENT_SetDVRMessCallBack.
+[2020-10-17T13:49:09.882 info Netsdk:44357 30448:31976 dhnetsdk.cpp:4194]Enter CLIENT_StartListenEx. lLoginID:486472048.
+[2020-10-17T13:49:09.885 info Netsdk:44357 30448:31976 dhnetsdk.cpp:4215]Leave CLIENT_StartListenEx.ret:1.

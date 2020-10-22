@@ -18,3 +18,11 @@ Begin Time:2020-10-21T13:30:17.328
 [2020-10-21T13:30:17.489 info Netsdk:44357 8840:17196 Utils.cpp:4815]mutil NIC client
 [2020-10-21T13:30:17.493 info Netsdk:44357 8840:17196 DevConfigEx.cpp:10086]IN SetupSession PORT=0 and PORT: 37777
 [2020-10-21T13:30:17.514 info Netsdk:44357 8840:17196 dhnetsdk.cpp:9328]Leave CLIENT_RealLoadPictureEx. ret:487278128.
+[2020-10-21T13:45:34.692 error Netsdk:44357 8840:18112 TPIOCPMultiplexer.cpp:119]receive data result, GetQueuedCompletionStatus error:1236
+[2020-10-21T13:45:34.692 error Netsdk:44357 8840:3604 TPIOCPMultiplexer.cpp:119]receive data result, GetQueuedCompletionStatus error:1236
+[2020-10-21T13:45:34.692 error Netsdk:44357 8840:18112 TPObject.cpp:102]Receive error, ret:-1, err:10054
+[2020-10-21T13:45:34.693 error Netsdk:44357 8840:18112 TPTCPClient.cpp:142]Receive to iocp error
+[2020-10-21T13:45:34.693 error Netsdk:44357 8840:18112 TPTCPClient.cpp:184]Disconnect, ip:10.12.44.21, port is 37777
+[2020-10-21T13:45:34.693 error Netsdk:44357 8840:3604 TPObject.cpp:102]Receive error, ret:-1, err:10054
+[2020-10-21T13:45:34.693 error Netsdk:44357 8840:3604 TPTCPClient.cpp:142]Receive to iocp error
+[2020-10-21T13:45:34.693 error Netsdk:44357 8840:3604 TPTCPClient.cpp:184]Disconnect, ip:10.12.44.21, port is 37777

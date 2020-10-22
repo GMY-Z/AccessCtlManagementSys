@@ -1,10 +1,10 @@
 package com.gmy.AccessCTLManagementSys.lib;
 
+import com.gmy.AccessCTLManagementSys.module.LoginModule;
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import com.sun.jna.ptr.IntByReference;
-import com.gmy.AccessCTLManagementSys.module.LoginModule;
 import com.gmy.AccessCTLManagementSys.lib.NetSDKLib.LLong;
 
 import javax.swing.*;
@@ -346,7 +346,7 @@ public class ToolKits {
 	 * @return
 	 */
 	public static String getErrorCodePrint() {
-		return "\n{error code: (0x80000000|" + (LoginModule.netsdk.CLIENT_GetLastError() & 0x7fffffff) +").参考  NetSDKLib.java }" 
+		return "\n{error code: (0x80000000|" + (LoginModule.netsdk.CLIENT_GetLastError() & 0x7fffffff) +").参考  NetSDKLib.java }"
 				+ " - {error info:" + LoginModule.netsdk.CLIENT_GetLastError() + "}\n";
 	}
 	

@@ -1,0 +1,57 @@
+Begin Time:2020-10-21T20:08:16.376
+[2020-10-21T20:08:16.376 info Netsdk:44357 17480:21608 AVNetSDKMgr.cpp:376]Load avnetsdk library dynamically
+[2020-10-21T20:08:16.386 info Netsdk:44357 17480:21608 AVNetSDKMgr.cpp:400]avnetsdk module handle: 000000001EBC0000
+
+[2020-10-21T20:08:16.386 info Netsdk:44357 17480:21608 AVNetSDKMgr.cpp:730]Load configsdk dynamically
+[2020-10-21T20:08:16.390 info Netsdk:44357 17480:21608 dhnetsdk.cpp:190]Enter CLIENT_SetAutoReconnect:[cbAutoConnect=000000001C7D0050, dwUser=0000000000000000].
+[2020-10-21T20:08:16.390 info Netsdk:44357 17480:21608 dhnetsdk.cpp:192]Leave CLIENT_SetAutoReconnect.
+[2020-10-21T20:08:16.390 info Netsdk:44357 17480:21608 dhnetsdk.cpp:210]Enter CLIENT_SetConnectTime:[nWaitTime=5000, nTryTimes=1].
+[2020-10-21T20:08:16.390 info Netsdk:44357 17480:21608 dhnetsdk.cpp:223]Leave CLIENT_SetConnectTime.
+[2020-10-21T20:08:16.390 info Netsdk:44357 17480:21608 dhnetsdk.cpp:34041]Enter CLIENT_SetGDPREnable.[bEnable=-1]
+[2020-10-21T20:08:16.390 info Netsdk:44357 17480:21608 dhnetsdk.cpp:34045]Leave CLIENT_SetGDPREnable.
+[2020-10-21T20:08:16.391 info Netsdk:44357 17480:21608 dhnetsdk.cpp:234]Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=10000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=3000, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2020-10-21T20:08:16.391 info Netsdk:44357 17480:21608 dhnetsdk.cpp:249]Leave CLIENT_SetNetworkParam.
+[2020-10-21T20:08:16.392 info Netsdk:44357 17480:21608 dhnetsdk.cpp:809]Enter CLIENT_LoginWithHighLevelSecurity. pstInParam:0000000000755CF0, pstOutParam:0000000000770420.
+[2020-10-21T20:08:16.392 info Netsdk:44357 17480:21608 dhnetsdk.cpp:825]IP:10.12.44.21, port:37777, SpeCap:0, CapParam:0000000000000000.
+[2020-10-21T20:08:16.515 info Netsdk:44357 17480:21608 dhnetsdk.cpp:871]Leave CLIENT_LoginWithHighLevelSecurity. error:0, login ID:473095552.
+[2020-10-21T20:08:16.517 info Netsdk:44357 17480:21608 dhnetsdk.cpp:9309]Enter CLIENT_RealLoadPictureEx. lLoginID:473095552, nChannelID:0, dwAlarmType:1, bNeedPicFile:1, cbAnalyzerData:000000001C7D0090, dwUser:0000000000000000, Reserved:0000000000000000.
+[2020-10-21T20:08:16.519 info Netsdk:44357 17480:21608 Utils.cpp:4815]mutil NIC client
+[2020-10-21T20:08:16.525 info Netsdk:44357 17480:21608 DevConfigEx.cpp:10086]IN SetupSession PORT=0 and PORT: 37777
+[2020-10-21T20:08:16.545 info Netsdk:44357 17480:21608 dhnetsdk.cpp:9328]Leave CLIENT_RealLoadPictureEx. ret:473110048.
+[2020-10-21T20:08:16.546 info Netsdk:44357 17480:21608 dhnetsdk.cpp:136]Enter CLIENT_InitEx:[cbDisConnect=000000001C7D0010, dwUser=0000000000000000, lpInitParam=0000000000000000].
+[2020-10-21T20:08:16.546 info Netsdk:44357 17480:21608 AVNetSDKMgr.cpp:683]Test avnetsdk module handle: 000000001EBC0000
+
+[2020-10-21T20:08:16.546 info Netsdk:44357 17480:21608 dhnetsdk.cpp:159]Leave CLIENT_InitEx.
+[2020-10-21T20:08:16.547 info Netsdk:44357 17480:21608 Manager.cpp:13590]-------------------Log file reset, log number:10-log size:10240------------------
+Begin Time:2020-10-21T20:08:16.549
+[2020-10-21T20:08:16.549 info Netsdk:44357 17480:21608 dhnetsdk.cpp:190]Enter CLIENT_SetAutoReconnect:[cbAutoConnect=000000001C7D0050, dwUser=0000000000000000].
+[2020-10-21T20:08:16.549 info Netsdk:44357 17480:21608 dhnetsdk.cpp:192]Leave CLIENT_SetAutoReconnect.
+[2020-10-21T20:08:16.549 info Netsdk:44357 17480:21608 dhnetsdk.cpp:210]Enter CLIENT_SetConnectTime:[nWaitTime=5000, nTryTimes=1].
+[2020-10-21T20:08:16.549 info Netsdk:44357 17480:21608 dhnetsdk.cpp:223]Leave CLIENT_SetConnectTime.
+[2020-10-21T20:08:16.549 info Netsdk:44357 17480:21608 dhnetsdk.cpp:34041]Enter CLIENT_SetGDPREnable.[bEnable=-1]
+[2020-10-21T20:08:16.549 info Netsdk:44357 17480:21608 dhnetsdk.cpp:34045]Leave CLIENT_SetGDPREnable.
+[2020-10-21T20:08:16.550 info Netsdk:44357 17480:21608 dhnetsdk.cpp:234]Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=10000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=3000, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2020-10-21T20:08:16.550 info Netsdk:44357 17480:21608 dhnetsdk.cpp:249]Leave CLIENT_SetNetworkParam.
+[2020-10-21T20:08:16.552 info Netsdk:44357 17480:21608 dhnetsdk.cpp:809]Enter CLIENT_LoginWithHighLevelSecurity. pstInParam:0000000000755A50, pstOutParam:0000000000771A20.
+[2020-10-21T20:08:16.552 info Netsdk:44357 17480:21608 dhnetsdk.cpp:825]IP:10.12.44.21, port:37777, SpeCap:0, CapParam:0000000000000000.
+[2020-10-21T20:08:16.710 info Netsdk:44357 17480:21608 dhnetsdk.cpp:871]Leave CLIENT_LoginWithHighLevelSecurity. error:0, login ID:473112912.
+[2020-10-21T20:08:16.710 info Netsdk:44357 17480:21608 dhnetsdk.cpp:9309]Enter CLIENT_RealLoadPictureEx. lLoginID:473112912, nChannelID:0, dwAlarmType:1, bNeedPicFile:1, cbAnalyzerData:000000001C7D00D0, dwUser:0000000000000000, Reserved:0000000000000000.
+[2020-10-21T20:08:16.712 info Netsdk:44357 17480:21608 Utils.cpp:4815]mutil NIC client
+[2020-10-21T20:08:16.728 info Netsdk:44357 17480:21608 DevConfigEx.cpp:10086]IN SetupSession PORT=0 and PORT: 37777
+[2020-10-21T20:08:16.749 info Netsdk:44357 17480:21608 dhnetsdk.cpp:9328]Leave CLIENT_RealLoadPictureEx. ret:557812768.
+[2020-10-21T20:32:15.259 error Netsdk:44357 17480:22960 TPIOCPMultiplexer.cpp:119]receive data result, GetQueuedCompletionStatus error:1236
+[2020-10-21T20:32:15.259 error Netsdk:44357 17480:22960 TPObject.cpp:102]Receive error, ret:-1, err:10054
+[2020-10-21T20:32:15.259 error Netsdk:44357 17480:22960 TPTCPClient.cpp:142]Receive to iocp error
+[2020-10-21T20:32:15.260 error Netsdk:44357 17480:22960 TPTCPClient.cpp:184]Disconnect, ip:10.12.44.21, port is 37777
+[2020-10-21T20:32:15.261 error Netsdk:44357 17480:7768 TPIOCPMultiplexer.cpp:119]receive data result, GetQueuedCompletionStatus error:1236
+[2020-10-21T20:32:15.261 error Netsdk:44357 17480:7768 TPObject.cpp:102]Receive error, ret:-1, err:10054
+[2020-10-21T20:32:15.261 error Netsdk:44357 17480:7768 TPTCPClient.cpp:142]Receive to iocp error
+[2020-10-21T20:32:15.261 error Netsdk:44357 17480:7768 TPTCPClient.cpp:184]Disconnect, ip:10.12.44.21, port is 37777
+[2020-10-21T20:32:15.262 error Netsdk:44357 17480:23196 TPIOCPMultiplexer.cpp:119]receive data result, GetQueuedCompletionStatus error:1236
+[2020-10-21T20:32:15.262 error Netsdk:44357 17480:23196 TPObject.cpp:102]Receive error, ret:-1, err:10054
+[2020-10-21T20:32:15.262 error Netsdk:44357 17480:23196 TPTCPClient.cpp:142]Receive to iocp error
+[2020-10-21T20:32:15.262 error Netsdk:44357 17480:23196 TPTCPClient.cpp:184]Disconnect, ip:10.12.44.21, port is 37777
+[2020-10-21T20:32:15.262 error Netsdk:44357 17480:21880 TPIOCPMultiplexer.cpp:119]receive data result, GetQueuedCompletionStatus error:1236
+[2020-10-21T20:32:15.262 error Netsdk:44357 17480:21880 TPObject.cpp:102]Receive error, ret:-1, err:10054
+[2020-10-21T20:32:15.262 error Netsdk:44357 17480:21880 TPTCPClient.cpp:142]Receive to iocp error
+[2020-10-21T20:32:15.262 error Netsdk:44357 17480:21880 TPTCPClient.cpp:184]Disconnect, ip:10.12.44.21, port is 37777

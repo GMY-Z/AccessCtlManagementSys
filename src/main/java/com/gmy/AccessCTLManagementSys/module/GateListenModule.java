@@ -4,6 +4,7 @@ import com.gmy.AccessCTLManagementSys.lib.NetSDKLib;
 import com.gmy.AccessCTLManagementSys.lib.ToolKits;
 import com.gmy.AccessCTLManagementSys.utils.AnalyzerDataCB;
 import com.sun.jna.Pointer;
+import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import java.io.File;
@@ -12,6 +13,7 @@ import java.io.File;
  * @authon GMY
  * @create 2020-10-21 18:44
  */
+@Service
 public class GateListenModule {
 
     String ip = "10.12.44.21";
@@ -20,9 +22,9 @@ public class GateListenModule {
     String password = "12345678a";
 
     //报警回调函数实现
-    AnalyzerDataCB analyzerDataCB;
+    AnalyzerDataCB analyzerDataCB = new AnalyzerDataCB();
 
-    public static NetSDKLib netsdk = LoginModule.netsdk;
+    public static NetSDKLib netsdk = NetSDKLib.NETSDK_INSTANCE;
 
     // 设备断线通知回调
     private static DisConnect disConnect = new DisConnect();
@@ -36,28 +38,32 @@ public class GateListenModule {
     // 登陆句柄
     public NetSDKLib.LLong m_hLoginHandle = new NetSDKLib.LLong(0);
 
+    // 订阅句柄
+    public NetSDKLib.LLong m_hAttachHandle = new NetSDKLib.LLong(0);
     private boolean bInit    = false;
     private boolean bLogopen = false;
 
 
-    public GateListenModule(String ip, int port, String user, String password) {
-        this.ip = ip;
-        this.port = port;
-        this.user = user;
-        this.password = password;
-        analyzerDataCB = null;
+    public GateListenModule() {
+//        this.ip = ip;
+//        this.port = port;
+//        this.user = user;
+//        this.password = password;
         //调用sdk
+        System.out.println("sdk");
         sdk();
     }
 
     private void sdk() {
         this.init(disConnect, haveReConnect);
         if (this.Login()) {
+            System.out.println("setonclicklisten");
             this.setOnClickListener();
         }
     }
 
     private boolean init(NetSDKLib.fDisConnect disConnect, NetSDKLib.fHaveReConnect haveReConnect) {
+        System.out.println("init");
         bInit = netsdk.CLIENT_Init(disConnect, null);
         if(!bInit) {
             System.out.println("Initialize SDK failed");
@@ -104,6 +110,7 @@ public class GateListenModule {
     }
 
     private Boolean Login() {
+        System.out.println("login");
         //入参
         NetSDKLib.NET_IN_LOGIN_WITH_HIGHLEVEL_SECURITY pstInParam = new NetSDKLib.NET_IN_LOGIN_WITH_HIGHLEVEL_SECURITY();
         pstInParam.nPort = port;
@@ -118,7 +125,7 @@ public class GateListenModule {
             System.err.printf("Login Device[%s] Port[%d]Failed. %s\n", ip, port, ToolKits.getErrorCodePrint());
         } else {
             System.out.println("Login Success [ " + ip + " ]");
-            System.out.println(new String(m_stDeviceInfo.sSerialNumber).trim());
+//            System.out.println(new String(m_stDeviceInfo.sSerialNumber).trim());
         }
 
         return m_hLoginHandle.longValue() == 0 ? false : true;
@@ -126,18 +133,27 @@ public class GateListenModule {
 
     private void setOnClickListener() {
         if(analyzerDataCB == null){
+            System.out.println("new回调函数");
             analyzerDataCB = new AnalyzerDataCB();
-            analyzerDataCB.setsSerialNumber(new String(m_stDeviceInfo.sSerialNumber).trim());
-            int bNeedPicture = 1; // 是否需要图片
-
-            NetSDKLib.LLong m_hAttachHandle = netsdk.CLIENT_RealLoadPictureEx(m_hLoginHandle, 0,  NetSDKLib.EVENT_IVS_ALL,
-                    bNeedPicture , analyzerDataCB , null , null);
-            if( m_hAttachHandle.longValue() != 0  ) {
-                System.out.println("CLIENT_RealLoadPictureEx Success  ChannelId : \n" + 0);
-            } else {
-                System.err.println("CLIENT_RealLoadPictureEx Failed!" + ToolKits.getErrorCodePrint());
-            }
         }
+        analyzerDataCB.setsSerialNumber(new String(m_stDeviceInfo.sSerialNumber).trim());
+        /**
+         * 说明：
+         * 	通道数可以在有登录是返回的信息 m_stDeviceInfo.byChanNum 获取
+         *  下列仅订阅了0通道的智能事件.
+         */
+        int bNeedPicture = 1; // 是否需要图片
+        if (0 != m_hAttachHandle.longValue()) {
+            stopRealLoadPic(m_hAttachHandle);
+        }
+        m_hAttachHandle = netsdk.CLIENT_RealLoadPictureEx(m_hLoginHandle, 0,  NetSDKLib.EVENT_IVS_ALL,
+                bNeedPicture , analyzerDataCB , null , null);
+        if( m_hAttachHandle.longValue() != 0  ) {
+            System.out.println("CLIENT_RealLoadPictureEx Success  ChannelId : \n" + 0);
+        } else {
+            System.err.println("CLIENT_RealLoadPictureEx Failed!" + ToolKits.getErrorCodePrint());
+        }
+
     }
 
     /**

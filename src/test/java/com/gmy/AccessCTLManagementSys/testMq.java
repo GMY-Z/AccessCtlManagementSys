@@ -1,0 +1,37 @@
+package com.gmy.AccessCTLManagementSys;
+
+import com.gmy.AccessCTLManagementSys.domain.EventAccessInfo;
+import org.assertj.core.util.Maps;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageHeaders;
+import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.test.context.junit4.SpringRunner;
+import sun.net.www.MessageHeader;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * @authon GMY
+ * @create 2020-10-22 21:18
+ */
+@SpringBootTest(classes = AccessCtlManagementSysApplication.class)
+@RunWith(SpringRunner.class)
+public class testMq {
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    @Test
+    public void test() throws IOException {
+        EventAccessInfo eventAccessInfo = new EventAccessInfo();
+        eventAccessInfo.setDeviceId("ss");
+
+    }
+}

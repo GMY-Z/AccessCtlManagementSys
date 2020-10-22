@@ -1,16 +1,14 @@
 package com.gmy.AccessCTLManagementSys.utils;
 
+import com.gmy.AccessCTLManagementSys.domain.EventAccessInfo;
 import com.gmy.AccessCTLManagementSys.lib.NetSDKLib;
 import com.gmy.AccessCTLManagementSys.lib.ToolKits;
-import com.gmy.AccessCTLManagementSys.module.LoginModule;
+import com.gmy.AccessCTLManagementSys.mq.RabbitMQProducer;
 import com.sun.jna.Pointer;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 
 /**
  * @authon GMY
@@ -24,6 +22,7 @@ public class AnalyzerDataCB implements NetSDKLib.fAnalyzerDataCallBack {
         this.sSerialNumber = sSerialNumber;
     }
 
+    @Override
     public int invoke(NetSDKLib.LLong lAnalyzerHandle, int dwAlarmType,
                       Pointer pAlarmInfo, Pointer pBuffer, int dwBufSize,
                       Pointer dwUser, int nSequence, Pointer reserved) {
@@ -61,6 +60,19 @@ public class AnalyzerDataCB implements NetSDKLib.fAnalyzerDataCallBack {
             byte[] buffer = pBuffer.getByteArray(0, dwBufSize);
             ByteArrayInputStream byteArrInputGlobal = new ByteArrayInputStream(buffer);
 
+            EventAccessInfo eventAccessInfo = new EventAccessInfo();
+            eventAccessInfo.setSchoolId("001");
+            eventAccessInfo.setStudentId(new String(msg.szUserID).trim());
+            eventAccessInfo.setStudentName(cardName);
+            eventAccessInfo.setTime("" + System.currentTimeMillis());
+            eventAccessInfo.setImageBuffer(buffer);
+            eventAccessInfo.setDeviceId(sSerialNumber);
+
+
+            //生产者直接发送对象
+            RabbitMQProducer.sendDataToQueue("hello",eventAccessInfo);
+
+            System.out.println("发送结束");
             try {
                 gateBufferedImage = ImageIO.read(byteArrInputGlobal);
                 if (gateBufferedImage != null) {

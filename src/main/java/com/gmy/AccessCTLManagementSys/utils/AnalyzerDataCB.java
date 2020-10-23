@@ -5,10 +5,15 @@ import com.gmy.AccessCTLManagementSys.lib.NetSDKLib;
 import com.gmy.AccessCTLManagementSys.lib.ToolKits;
 import com.gmy.AccessCTLManagementSys.mq.RabbitMQProducer;
 import com.sun.jna.Pointer;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @authon GMY
@@ -68,9 +73,9 @@ public class AnalyzerDataCB implements NetSDKLib.fAnalyzerDataCallBack {
             eventAccessInfo.setImageBuffer(buffer);
             eventAccessInfo.setDeviceId(sSerialNumber);
 
-
-            //生产者直接发送对象
-            RabbitMQProducer.sendDataToQueue("hello",eventAccessInfo);
+            //MQ
+            RabbitMQProducer rabbitMQProducer = (RabbitMQProducer) SpringUtil.getBean("RabbitMQProducer");
+            rabbitMQProducer.send(eventAccessInfo);
 
             System.out.println("发送结束");
             try {

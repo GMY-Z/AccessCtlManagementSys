@@ -1,0 +1,25 @@
+Begin Time:2020-10-23T15:30:52.065
+[2020-10-23T15:30:52.065 info Netsdk:44357 21728:19008 AVNetSDKMgr.cpp:376]Load avnetsdk library dynamically
+[2020-10-23T15:30:52.074 info Netsdk:44357 21728:19008 AVNetSDKMgr.cpp:400]avnetsdk module handle: 0000000022B90000
+
+[2020-10-23T15:30:52.074 info Netsdk:44357 21728:19008 AVNetSDKMgr.cpp:730]Load configsdk dynamically
+[2020-10-23T15:30:52.080 info Netsdk:44357 21728:19008 dhnetsdk.cpp:190]Enter CLIENT_SetAutoReconnect:[cbAutoConnect=000000001B810050, dwUser=0000000000000000].
+[2020-10-23T15:30:52.080 info Netsdk:44357 21728:19008 dhnetsdk.cpp:192]Leave CLIENT_SetAutoReconnect.
+[2020-10-23T15:30:52.080 info Netsdk:44357 21728:19008 dhnetsdk.cpp:210]Enter CLIENT_SetConnectTime:[nWaitTime=5000, nTryTimes=1].
+[2020-10-23T15:30:52.081 info Netsdk:44357 21728:19008 dhnetsdk.cpp:223]Leave CLIENT_SetConnectTime.
+[2020-10-23T15:30:52.081 info Netsdk:44357 21728:19008 dhnetsdk.cpp:34041]Enter CLIENT_SetGDPREnable.[bEnable=-1]
+[2020-10-23T15:30:52.081 info Netsdk:44357 21728:19008 dhnetsdk.cpp:34045]Leave CLIENT_SetGDPREnable.
+[2020-10-23T15:30:52.081 info Netsdk:44357 21728:19008 dhnetsdk.cpp:234]Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=10000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=3000, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2020-10-23T15:30:52.082 info Netsdk:44357 21728:19008 dhnetsdk.cpp:249]Leave CLIENT_SetNetworkParam.
+[2020-10-23T15:30:52.087 info Netsdk:44357 21728:19008 dhnetsdk.cpp:809]Enter CLIENT_LoginWithHighLevelSecurity. pstInParam:0000000000A49A20, pstOutParam:0000000000A73240.
+[2020-10-23T15:30:52.087 info Netsdk:44357 21728:19008 dhnetsdk.cpp:825]IP:10.12.44.21, port:37777, SpeCap:0, CapParam:0000000000000000.
+[2020-10-23T15:31:02.089 error Netsdk:44357 21728:19008 TPTCPClient.cpp:392]Connect host failed, ip:10.12.44.21
+[2020-10-23T15:31:02.089 error Netsdk:44357 21728:19008 dhdevprob.cpp:2357]Login failed, Failed to create main connection
+[2020-10-23T15:31:02.089 error Netsdk:44357 21728:19008 Manager.cpp:8127]device is NULL
+[2020-10-23T15:31:02.089 error Netsdk:44357 21728:19008 Manager.cpp:8228]Login device failed, errorcode:9!
+[2020-10-23T15:31:02.089 error Netsdk:44357 21728:19008 dhnetsdk.cpp:867]Login failed, ip:10.12.44.21, port:37777, specCap:0!
+[2020-10-23T15:31:02.089 info Netsdk:44357 21728:19008 dhnetsdk.cpp:871]Leave CLIENT_LoginWithHighLevelSecurity. error:9, login ID:0.
+[2020-10-23T15:31:02.091 info Netsdk:44357 21728:19008 dhnetsdk.cpp:7162]Enter CLIENT_GetLastError.
+[2020-10-23T15:31:02.091 info Netsdk:44357 21728:19008 dhnetsdk.cpp:7165]Leave CLIENT_GetLastError.[Error code=8000006b.]
+[2020-10-23T15:31:02.091 info Netsdk:44357 21728:19008 dhnetsdk.cpp:7162]Enter CLIENT_GetLastError.
+[2020-10-23T15:31:02.091 info Netsdk:44357 21728:19008 dhnetsdk.cpp:7165]Leave CLIENT_GetLastError.[Error code=8000006b.]

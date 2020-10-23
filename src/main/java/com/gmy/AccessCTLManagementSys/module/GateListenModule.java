@@ -4,6 +4,7 @@ import com.gmy.AccessCTLManagementSys.lib.NetSDKLib;
 import com.gmy.AccessCTLManagementSys.lib.ToolKits;
 import com.gmy.AccessCTLManagementSys.utils.AnalyzerDataCB;
 import com.sun.jna.Pointer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.swing.*;
@@ -13,7 +14,7 @@ import java.io.File;
  * @authon GMY
  * @create 2020-10-21 18:44
  */
-@Service
+//@Service
 public class GateListenModule {
 
     String ip = "10.12.44.21";
@@ -49,6 +50,17 @@ public class GateListenModule {
 //        this.port = port;
 //        this.user = user;
 //        this.password = password;
+        //调用sdk
+        System.out.println("sdk");
+        sdk();
+    }
+
+
+    public GateListenModule(String ip, int port, String user, String password) {
+        this.ip = ip;
+        this.port = port;
+        this.user = user;
+        this.password = password;
         //调用sdk
         System.out.println("sdk");
         sdk();
@@ -133,8 +145,8 @@ public class GateListenModule {
 
     private void setOnClickListener() {
         if(analyzerDataCB == null){
-            System.out.println("new回调函数");
-            analyzerDataCB = new AnalyzerDataCB();
+            System.out.println("analyzerDataCB为null");
+//            analyzerDataCB = new AnalyzerDataCB();
         }
         analyzerDataCB.setsSerialNumber(new String(m_stDeviceInfo.sSerialNumber).trim());
         /**

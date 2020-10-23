@@ -1,6 +1,7 @@
 package com.gmy.AccessCTLManagementSys;
 
 import com.gmy.AccessCTLManagementSys.domain.EventAccessInfo;
+import com.gmy.AccessCTLManagementSys.mq.RabbitMQProducer;
 import org.assertj.core.util.Maps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,10 +29,36 @@ public class testMq {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
+    @Autowired
+    private RabbitMQProducer rabbitMQProducer;
+
     @Test
     public void test() throws IOException {
         EventAccessInfo eventAccessInfo = new EventAccessInfo();
         eventAccessInfo.setDeviceId("ss");
-
+        Map<String, Object> map = new HashMap<>();
+        map.put("1","df");
+        map.put("dd", eventAccessInfo);
+        //生产者直接发送对象
+        rabbitTemplate.convertAndSend("exchange.direct","hello",map);
     }
+
+
+    @Test
+    public void test1() {
+        EventAccessInfo eventAccessInfo = new EventAccessInfo();
+        eventAccessInfo.setDeviceId("ss");
+        Map<String, Object> map = new HashMap<>();
+        map.put("1","df");
+        map.put("dd", eventAccessInfo);
+        //生产者直接发送对象
+        rabbitTemplate.convertAndSend("exchange.direct","dahua",eventAccessInfo);
+    }
+
+    @Test
+    public void test2(){
+//        rabbitTemplate.convertAndSend("dahua","sd");
+//        rabbitMQProducer.send();
+    }
+
 }

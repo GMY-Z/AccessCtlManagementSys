@@ -1,5 +1,6 @@
 package com.gmy.AccessCTLManagementSys.utils;
 
+
 import com.gmy.AccessCTLManagementSys.domain.EventAccessInfo;
 import com.gmy.AccessCTLManagementSys.lib.NetSDKLib;
 import com.gmy.AccessCTLManagementSys.lib.ToolKits;
@@ -60,13 +61,14 @@ public class AnalyzerDataCB implements NetSDKLib.fAnalyzerDataCallBack {
             System.out.println("卡号" + new String(msg.szCardNo).trim());
             System.out.println("用户姓名" + cardName);
             System.out.println("序列号" + sSerialNumber);
+            String s = new String(msg.szClassNumber);
+            System.out.println(s);
             // 保存图片，获取图片缓存
             String snapPicPath = path + "\\" + System.currentTimeMillis() + "GateSnapPicture.jpg";  // 保存图片地址
             byte[] buffer = pBuffer.getByteArray(0, dwBufSize);
             ByteArrayInputStream byteArrInputGlobal = new ByteArrayInputStream(buffer);
 
             EventAccessInfo eventAccessInfo = new EventAccessInfo();
-            eventAccessInfo.setSchoolId("001");
             eventAccessInfo.setStudentId(new String(msg.szUserID).trim());
             eventAccessInfo.setStudentName(cardName);
             eventAccessInfo.setTime("" + System.currentTimeMillis());

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class DirectConfig {
 
     //队列名称
-    private String Direct_DaHua = "dahua";
+    private String Direct_DaHua = "hello";
 
     //交换机名称
     private String EXCHANGE_NAME = "exchange.direct";

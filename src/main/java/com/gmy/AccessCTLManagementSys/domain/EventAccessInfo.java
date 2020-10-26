@@ -8,7 +8,6 @@ import java.util.Arrays;
  * @create 2020-10-22 15:49
  */
 public class EventAccessInfo implements Serializable {
-    private String schoolId;
     private String studentId;
     private String studentName;
     private String time;
@@ -23,13 +22,6 @@ public class EventAccessInfo implements Serializable {
         this.studentName = studentName;
     }
 
-    public String getSchoolId() {
-        return schoolId;
-    }
-
-    public void setSchoolId(String schoolId) {
-        this.schoolId = schoolId;
-    }
 
     public String getStudentId() {
         return studentId;
@@ -66,7 +58,6 @@ public class EventAccessInfo implements Serializable {
     @Override
     public String toString() {
         return "EventAccessInfo{" +
-                "schoolId='" + schoolId + '\'' +
                 ", studentId=" + studentId +
                 ", time='" + time + '\'' +
                 ", imageBuffer=" + Arrays.toString(imageBuffer) +

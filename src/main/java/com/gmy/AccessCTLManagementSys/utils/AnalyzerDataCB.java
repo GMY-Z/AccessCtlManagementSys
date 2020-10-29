@@ -74,6 +74,7 @@ public class AnalyzerDataCB implements NetSDKLib.fAnalyzerDataCallBack {
             eventAccessInfo.setTime("" + System.currentTimeMillis());
             eventAccessInfo.setImageBuffer(buffer);
             eventAccessInfo.setDeviceId(sSerialNumber);
+            eventAccessInfo.setCardId(new String(msg.szCardNo).trim());
 
             //MQ
             RabbitMQProducer rabbitMQProducer = (RabbitMQProducer) SpringUtil.getBean("RabbitMQProducer");

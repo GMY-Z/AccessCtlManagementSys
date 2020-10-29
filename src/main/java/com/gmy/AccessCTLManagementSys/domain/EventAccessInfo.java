@@ -13,7 +13,15 @@ public class EventAccessInfo implements Serializable {
     private String time;
     private byte[] imageBuffer;
     private String deviceId;
+    private String cardId;
 
+    public String getCardId() {
+        return cardId;
+    }
+
+    public void setCardId(String cardId) {
+        this.cardId = cardId;
+    }
     public String getStudentName() {
         return studentName;
     }

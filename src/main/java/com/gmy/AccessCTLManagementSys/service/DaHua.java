@@ -12,8 +12,10 @@ import jdk.nashorn.internal.scripts.JS;
 import net.sf.json.JSONObject;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.system.ApplicationHome;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.util.*;
 
 /**
@@ -27,21 +29,21 @@ public class DaHua {
 
     public DaHua(){
 
-        String url = "http://localhost:8080/SchoolSecurityService/schoolSafetySupervisor/getAllFaceRecognitionDevice";
+        String url = "https://tidukeji.cn/SchoolSecurityService1/schoolSafetySupervisor/getAllFaceRecognitionDevice";
         //使用JSject
         JSONObject json =  new JSONObject();
         json.put("department", 40);
         String dataSource = json.toString();
         String jsonString = AccessingThirdPartyInterface.httppost(url, dataSource);
-        System.out.println(jsonString);
+        if(jsonString == "fail"){
+            System.out.println("服务器接口获取设备信息错误");
+        }
         JSONArray jsonArray = JSON.parseArray(jsonString);
         for (Object obj : jsonArray) {
             com.alibaba.fastjson.JSONObject jsonObject = (com.alibaba.fastjson.JSONObject) obj;
-//            System.out.println(jsonObject.getString("deviceIP")+":"+jsonObject.getString("deviceUserName"));
             GateListenModule gateListenModule = new GateListenModule(jsonObject.getString("deviceIP"), 37777, jsonObject.getString("deviceUserName"), jsonObject.getString("devicePassword"));
             gateListenModuleList.add(gateListenModule);
         }
-
 //        EventAccessInfo eventAccessInfo = new EventAccessInfo();
 //        eventAccessInfo.setDeviceId("ss");
 //        Map<String, Object> map = new HashMap<>();
@@ -50,6 +52,6 @@ public class DaHua {
         //生产者直接发送对象
 //        rabbitMQProducer.send();
 //        rabbitMQProducer.sendDataToQueue("exchange.direct","dahua",eventAccessInfo);
-        System.out.println("dahua设备启动");
+//        System.out.println("dahua设备启动");
     }
 }

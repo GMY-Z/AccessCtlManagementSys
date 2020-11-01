@@ -1,10 +1,47 @@
 package com.gmy.AccessCTLManagementSys.lib;
 
 import com.sun.jna.Platform;
+import org.springframework.boot.system.ApplicationHome;
+
+import java.io.File;
+import java.io.UnsupportedEncodingException;
 
 public class Utils {
 	public Utils() {
 
+	}
+
+	//加载海康HCNetSDK.dll文件的路径
+	public static final String loadLibrary=HCNetSDKPath.DLL_PATH;
+	public static final String loadLibrary1 =HCNetSDKPath.DLL_PATH1;
+
+	public static class HCNetSDKPath {
+		public static String DLL_PATH, DLL_PATH1;
+		/*下面这个是加载dll文件的 ，也就是上面的第3步（做了第3步可以不要这个static里面的内容，但是用这个把第3步换成工具类加载更加的方便后续的维护，所以我们把第3步的加载路径换成：
+          HCNetSDK INSTANCE = (HCNetSDK) Native.loadLibrary(HCNetDeviceConUtil.loadLibrary,
+                HCNetSDK.class);
+    */
+		static {
+//			String path = (HCNetSDKPath.class.getResource("/win64/dhnetsdk.dll").getPath()).replaceAll("%20", " ").substring(1).replace("/",
+//					"\\");
+//			String path1 = (HCNetSDKPath.class.getResource("/win64/dhconfigsdk.dll").getPath()).replaceAll("%20", " ").substring(1).replace("/",
+//					"\\");
+//			try {
+//				DLL_PATH = java.net.URLDecoder.decode(path, "utf-8");
+//				DLL_PATH1 = java.net.URLDecoder.decode(path1, "utf-8");
+//				System.out.println(DLL_PATH);
+//				System.out.println(DLL_PATH1);
+//			} catch (UnsupportedEncodingException e) {
+//				System.out.println("sdasdfaddfadf");
+//				e.printStackTrace();
+//			}
+			ApplicationHome h = new ApplicationHome(HCNetSDKPath.class);
+			File jarF = h.getSource();
+			String p = jarF.getParentFile().toString();
+			System.out.println(p);
+			DLL_PATH = p + "\\win64\\dhnetsdk.dll";
+			DLL_PATH1 = p + "\\win64\\dhconfigsdk.dll";
+		}
 	}
 	
 	// 获取操作平台信息
@@ -73,9 +110,9 @@ public class Utils {
 		String loadLibrary = "";
 		String osPrefix = getOsPrefix();
 		if(osPrefix.toLowerCase().startsWith("win32-x86")) {
-			loadLibrary = "./libs/win32/";
+			loadLibrary = "./src/main/resources/libs/win32/";
 		} else if(osPrefix.toLowerCase().startsWith("win32-amd64") ) {
-			loadLibrary = "./libs/win64/";
+			loadLibrary = "./target/classes/win64/";
 		} else if(osPrefix.toLowerCase().startsWith("linux-i386")) {
 			loadLibrary = "";
 		}else if(osPrefix.toLowerCase().startsWith("linux-amd64")) {

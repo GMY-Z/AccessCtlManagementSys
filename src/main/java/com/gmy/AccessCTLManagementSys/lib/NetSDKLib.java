@@ -18,13 +18,16 @@ import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.win32.StdCallLibrary.StdCallCallback;
 import com.sun.jna.Callback;
 
+import static com.gmy.AccessCTLManagementSys.lib.Utils.loadLibrary;
+import static com.gmy.AccessCTLManagementSys.lib.Utils.loadLibrary1;
+
 /**
  * NetSDK JNA接口封装
  */
 public interface NetSDKLib extends Library {
-	NetSDKLib NETSDK_INSTANCE = (NetSDKLib)Native.load(Utils.getLoadLibrary("dhnetsdk"), NetSDKLib.class);
+	NetSDKLib NETSDK_INSTANCE = (NetSDKLib)Native.load(loadLibrary, NetSDKLib.class);
 	
-	NetSDKLib CONFIG_INSTANCE = (NetSDKLib)Native.load(Utils.getLoadLibrary("dhconfigsdk"), NetSDKLib.class);
+	NetSDKLib CONFIG_INSTANCE = (NetSDKLib)Native.load(loadLibrary1, NetSDKLib.class);
 	
 	public static class LLong extends IntegerType {
 		private static final long serialVersionUID = 1L;

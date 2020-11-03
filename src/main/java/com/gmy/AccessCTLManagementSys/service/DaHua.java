@@ -18,6 +18,8 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.util.*;
 
+import static com.gmy.AccessCTLManagementSys.utils.ForDevTime.sendHeartBeat;
+
 /**
  * @authon GMY
  * @create 2020-10-21 19:33
@@ -25,8 +27,8 @@ import java.util.*;
 @Service
 public class DaHua {
 
-    private List<GateListenModule> gateListenModuleList = new ArrayList<>();
-
+    private static List<GateListenModule> gateListenModuleList = new ArrayList<>();
+    public static HashMap<String, String> deviceIpIdMap =  new HashMap<>();
     public DaHua(){
 
         String url = "https://tidukeji.cn/SchoolSecurityService1/schoolSafetySupervisor/getAllFaceRecognitionDevice";
@@ -43,6 +45,7 @@ public class DaHua {
             com.alibaba.fastjson.JSONObject jsonObject = (com.alibaba.fastjson.JSONObject) obj;
             GateListenModule gateListenModule = new GateListenModule(jsonObject.getString("deviceIP"), 37777, jsonObject.getString("deviceUserName"), jsonObject.getString("devicePassword"));
             gateListenModuleList.add(gateListenModule);
+            deviceIpIdMap.put(jsonObject.getString("deviceIP"),gateListenModule.getDeviceId());
         }
 //        EventAccessInfo eventAccessInfo = new EventAccessInfo();
 //        eventAccessInfo.setDeviceId("ss");

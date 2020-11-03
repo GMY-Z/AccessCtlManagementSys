@@ -1,14 +1,21 @@
 package com.gmy.AccessCTLManagementSys.module;
 
+import com.gmy.AccessCTLManagementSys.domain.DevHeartBeat;
 import com.gmy.AccessCTLManagementSys.lib.NetSDKLib;
 import com.gmy.AccessCTLManagementSys.lib.ToolKits;
+import com.gmy.AccessCTLManagementSys.utils.AccessingThirdPartyInterface;
 import com.gmy.AccessCTLManagementSys.utils.AnalyzerDataCB;
 import com.sun.jna.Pointer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import net.sf.json.JSONObject;
+
 
 import javax.swing.*;
 import java.io.File;
+
+
+import static com.gmy.AccessCTLManagementSys.service.DaHua.deviceIpIdMap;
+import static com.gmy.AccessCTLManagementSys.utils.ForDevTime.getCurTimestamp;
+import static com.gmy.AccessCTLManagementSys.utils.ForDevTime.sendHeartBeat;
 
 /**
  * @authon GMY
@@ -28,13 +35,15 @@ public class GateListenModule {
     public static NetSDKLib netsdk = NetSDKLib.NETSDK_INSTANCE;
 
     // 设备断线通知回调
-    private static DisConnect disConnect = new DisConnect();
+    private static   DisConnect disConnect = new DisConnect();
 
     // 网络连接恢复
-    private static HaveReConnect haveReConnect = new HaveReConnect();
+    private static   HaveReConnect haveReConnect = new HaveReConnect();
 
     // 设备信息
     public NetSDKLib.NET_DEVICEINFO_Ex m_stDeviceInfo = new NetSDKLib.NET_DEVICEINFO_Ex();
+
+    public String deviceId;
 
     // 登陆句柄
     public NetSDKLib.LLong m_hLoginHandle = new NetSDKLib.LLong(0);
@@ -69,7 +78,8 @@ public class GateListenModule {
     private void sdk() {
         this.init(disConnect, haveReConnect);
         if (this.Login()) {
-            System.out.println("setonclicklisten");
+            deviceId = new String(m_stDeviceInfo.sSerialNumber).trim();
+            sendHeartBeat(getDeviceId(), 1);
             this.setOnClickListener();
         }
     }
@@ -179,12 +189,16 @@ public class GateListenModule {
         }
     }
 
+    public String getDeviceId(){
+        return deviceId;
+    }
+
     // 设备断线回调: 通过 CLIENT_Init 设置该回调函数，当设备出现断线时，SDK会调用该函数
     private static class DisConnect implements NetSDKLib.fDisConnect {
         @Override
         public void invoke(NetSDKLib.LLong lLoginID, String pchDVRIP, int nDVRPort, Pointer dwUser) {
             System.out.printf("Device[%s] Port[%d] DisConnect!\n", pchDVRIP, nDVRPort);
-
+            sendHeartBeat(deviceIpIdMap.get(pchDVRIP), 0);
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     System.out.println("disConnect");
@@ -195,10 +209,10 @@ public class GateListenModule {
 
     // 网络连接恢复，设备重连成功回调
     // 通过 CLIENT_SetAutoReconnect 设置该回调函数，当已断线的设备重连成功时，SDK会调用该函数
-    private static class HaveReConnect implements NetSDKLib.fHaveReConnect {
+    private static   class HaveReConnect implements NetSDKLib.fHaveReConnect {
         public void invoke(NetSDKLib.LLong m_hLoginHandle, String pchDVRIP, int nDVRPort, Pointer dwUser) {
             System.out.printf("ReConnect Device[%s] Port[%d]\n", pchDVRIP, nDVRPort);
-
+            sendHeartBeat(deviceIpIdMap.get(pchDVRIP), 1);
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     System.out.println("reConnect");
